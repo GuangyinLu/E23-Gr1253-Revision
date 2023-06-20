@@ -21,12 +21,34 @@ class Personne:
         self.prenom = p_prenom
         self.age = p_age
 
-    def afficher(self):
+    def presenteToi(self):
         print('Je suis ', self.prenom, 'et j ai', self.age)
 
 # Un Etudiant(+ID, Groupe, AnneGraduation) est une Personne(nom,prenom,age)
 # Un Employé(+NumEmployee, Service, Bureau) == c'est une Personne
 # Un Enseignant(+Département est un Employé
+
+# class Etudiant hérite de Personne::
+class Etudiant(Personne):
+    # constructeur en utilisant un objet de type Personne(parent)
+    def __init__(self, p_personne, p_NumEdutiant, p_Groupe, p_AnneeGraduation):
+        super().__init__(p_personne.nom, p_personne.prenom, p_personne.age)
+        self.NumEtudiant = p_NumEtudiant
+        self.Groupe = p_Groupe
+        self.AnneGraduation = p_AnneeGraduation
+
+    def presenteToi(self):
+        print('Je suis ', self.prenom, 'et je suis dans le gr:', self.Groupe)
+
+"""
+  # constructeur V2 en utilisant un objet de type Personne (parent)
+    def __init__(self, p_nom, p_prenom, p_age, p_NumEtudiant, p_Groupe, p_AnneeGraduation):
+        super().__init__(p_nom, p_prenom, p_age)
+        self.NumEtudiant = p_NumEtudiant
+        self.Groupe = p_Groupe
+        self.AnneeGraduation =p_AnneeGraduation
+"""
+
 class Voiture:
     def __init__(self, v_marque, v_modele, v_couleur):
         self.__marque = v_marque
@@ -41,16 +63,25 @@ class Voiture:
         print('La voiture:', self.__marque, self.__modele, self.__couleur,
               ', est à ', self.__proprietaire.prenom)
 
-# Création des objets
+# Création des objets: Instantiation
 
 liste = []
 liste.append(Personne('babari', 'raouf', 31))
 liste.append(Personne('bachir', 'Fikry', 25))
 liste.append(Personne('Nabil', 'Agsous', 40))
 
+E1 = Etudiant(liste[1], 1234567, 1253, 2024)
+E2 = Etudiant(Personne('Nabil', 'Agsous', 40), 1234567, 1253, 2024)
+liste.append(E1)
+liste.append(E2)
+
+# constructeur V2 : E3 = Etudiant('Nabil', 'Agsous', 40, 1234567, 1253, 2024)
+
+# Les objets de la même classe se comportemt souvent de la même manière ...
+
 # Les objets de la même classe se comportemt souvent de la même manière ...
 for x in liste:
-    x.afficher()
+    x.presenteToi()
 
 
 #Exercice Créer une liste de 4 Voiture
