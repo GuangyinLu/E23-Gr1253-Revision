@@ -31,7 +31,7 @@ class Personne:
 # class Etudiant hérite de Personne::
 class Etudiant(Personne):
     # constructeur en utilisant un objet de type Personne(parent)
-    def __init__(self, p_personne, p_NumEdutiant, p_Groupe, p_AnneeGraduation):
+    def __init__(self, p_personne, p_NumEtudiant, p_Groupe, p_AnneeGraduation):
         super().__init__(p_personne.nom, p_personne.prenom, p_personne.age)
         self.NumEtudiant = p_NumEtudiant
         self.Groupe = p_Groupe
